@@ -2,11 +2,20 @@ package pl.edu.mimuw;
 
 import pl.edu.mimuw.matrix.IDoubleMatrix;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static pl.edu.mimuw.matrix.DoubleMatrixFactory.*;
 import static pl.edu.mimuw.matrix.MatrixCellValue.cell;
 import static pl.edu.mimuw.matrix.Shape.matrix;
 
 public class TestMatrixData {
+
+  public static final double TEST_PRECISION = 0.000001d;
+
+  public static void assertArrayEqualsWithTestPrecision(double[][] expected, double[][] actual) {
+    assertEquals(expected.length, actual.length);
+    for (int i = 0; i < expected.length; i++) assertArrayEquals(expected[i], actual[i], TEST_PRECISION);
+  }
 
   private TestMatrixData() {
   }
@@ -53,4 +62,10 @@ public class TestMatrixData {
   public static final IDoubleMatrix ID_3 = identity(3);
 
   public static final IDoubleMatrix ZERO_3X2 = zero(matrix(3, 2));
+
+  public static final IDoubleMatrix STATIC_4x3 = constant(matrix(4, 3), 9);
+
+  public static final IDoubleMatrix ROWS_4x3 = rows(matrix(4, 3), 9, 1, -3, 44);
+
+  public static final IDoubleMatrix COLUMNS_4x3 = columns(matrix(4, 3), 9, 1, -3);
 }

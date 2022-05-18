@@ -11,7 +11,7 @@ public final class Shape {
     this.columns = columns;
   }
 
-  void assertInShape(int row, int column) {
+  public void assertInShape(int row, int column) {
     assert row >= 0;
     assert row < rows;
     assert column >= 0;
@@ -39,5 +39,10 @@ public final class Shape {
     assert columns > 0;
     assert rows > 0;
     return new Shape(rows, columns);
+  }
+
+  @Override
+  public String toString() {
+    return "Rows: " + this.rows + " Columns: " + this.columns + "\n";
   }
 }
